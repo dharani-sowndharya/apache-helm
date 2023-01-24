@@ -155,7 +155,7 @@ cloneHtdocsFromGit:
   repository: https://github.com/dharani-sowndharya/beginner-html-site-styled.git
   branch: gh-pages
   enableAutoRefresh: true
-  interval: 20
+  interval: 5
   resources: {}
   ## Useful to mount keys to connect through ssh. (normally used with extraVolumes)
   ## E.g:
@@ -405,7 +405,8 @@ autoscaling:
 service:
   ## @param service.type Apache Service type
   ##
-  type: ClusterIP
+  #type: ClusterIP
+  type: LoadBalancer
   ## @param service.ports.http Apache service HTTP port
   ## @param service.ports.https Apache service HTTPS port
   ##
@@ -434,7 +435,7 @@ service:
   ## loadBalancerSourceRanges:
   ##   - 10.10.10.0/24
   ##
-  loadBalancerSourceRanges: []
+  loadBalancerSourceRanges: ["120.138.12.139/32"]
   ## @param service.annotations Additional custom annotations for Apache service
   ## This can be used to set the LoadBalancer service type to internal only.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
